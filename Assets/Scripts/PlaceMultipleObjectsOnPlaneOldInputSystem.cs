@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -27,11 +28,13 @@ public class PlaceMultipleObjectsOnPlaneOldInputSystem : MonoBehaviour
     [SerializeField]
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject placedPrefab;
+    
 
     /// <summary>
     /// The instantiated object.
     /// </summary>
     GameObject spawnedObject;
+    
 
     private int objectsPut;
 
@@ -70,16 +73,13 @@ public class PlaceMultipleObjectsOnPlaneOldInputSystem : MonoBehaviour
                 }
             }
 
-            if (aRRaycastManager.CompareTag("Objeto"))
-            {
-                
-            }
+           
 
         }
 
-            // To make the spawned object always look at the camera. Delete if not needed.
-            Vector3 lookPos = Camera.main.transform.position - spawnedObject.transform.position;
-            lookPos.y = 0;
-            spawnedObject.transform.rotation = Quaternion.LookRotation(lookPos);
-    } 
+        // To make the spawned object always look at the camera. Delete if not needed.
+        Vector3 lookPos = Camera.main.transform.position - spawnedObject.transform.position;
+        lookPos.y = 0;
+        spawnedObject.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
 }
